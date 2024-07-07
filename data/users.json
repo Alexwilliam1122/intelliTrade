@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "password": "$2b$10$udZrfu0rgObDK29exO/8kuCxSt8tupL9Af9ubOagFy8gHECwZJLaC",
+        "role": "admin",
+        "email": "adminInternal@intelliTrade.com"
+    },
+    {
+        "id": 2,
+        "username": "broker1",
+        "password": "$2b$10$udZrfu0rgObDK29exO/8kuCxSt8tupL9Af9ubOagFy8gHECwZJLaC",
+        "role": "broker",
+        "email": "brokerContract@intelliTrade.com"
+    },
+    {
+        "id": 3,
+        "username": "HarveySpecter",
+        "password": "$2b$10$udZrfu0rgObDK29exO/8kuCxSt8tupL9Af9ubOagFy8gHECwZJLaC",
+        "role": "user",
+        "email": "testUser1@intelliTrade.com"
+    },
+    {
+        "id": 4,
+        "username": "JohnWick",
+        "password": "$2b$10$udZrfu0rgObDK29exO/8kuCxSt8tupL9Af9ubOagFy8gHECwZJLaC",
+        "role": "user",
+        "email": "testUser2@intelliTrade.com"
+    },
+    {
+        "id": 5,
+        "username": "JaneDoe",
+        "password": "$2b$10$udZrfu0rgObDK29exO/8kuCxSt8tupL9Af9ubOagFy8gHECwZJLaC",
+        "role": "user",
+        "email": "testUser3@intelliTrade.com"
+    }
+]

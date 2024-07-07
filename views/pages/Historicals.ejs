@@ -1,0 +1,339 @@
+<%- include('../partials/Header.ejs', {title: 'Historical Details' }) %>
+
+  <%- include('../partials/Transactions.ejs', { stocks, portfolios, transactionRoute, errors }) %>
+
+
+    <div style="background-color: #121A2C; position: relative; padding-top: 120px; justify-content: center;">
+
+      <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md mx-10  "
+        style="width: auto; padding-bottom: 0px; padding-top: 5px;">
+        <div style="margin-left: 6px;">
+          <img style="height: 280px; width: auto;" src="<%= stockDetail['CompanyProfile.logo'] %>">
+        </div>
+        <div style="background-color: white; width: 1px; height: 280px; margin-left: 33px; margin-right: 13px;">
+        </div>
+        <div
+          class="bg-[#2C354C] rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal w-full">
+          <div class="mb-8">
+            <p class="text-sm text-gray-600 flex items-center">
+            <p style="color: #F6F7FB;"><strong>IPO Listing Date:</strong>
+              <%= dateFormatter(stockDetail['CompanyProfile.ipoListingDate']) %>
+            </p>
+            </p>
+            <div class="text-gray-900 font-bold text-xl mb-2" style="color: #F6F7FB;">
+              <%= stockDetail.stockName %> (<%= stockDetail.stockCode %>)
+            </div>
+            <p style="color: #F6F7FB;"><strong>Address:</strong>
+              <%= stockDetail['CompanyProfile.address'] %>
+            </p><br>
+            <p class="text-gray-700 text-base" style="color: #F6F7FB;">
+              <%= stockDetail['CompanyProfile.about'] %>
+            </p>
+          </div>
+          <div class="text-gray-600 text-sm" style="color: #F6F7FB;">
+            <p style="color: #F6F7FB;"><strong>NPWP:</strong> 01.308.449.6-091.000</p>
+            <p style="color: #F6F7FB;"><strong>IPO Securities Administration Bureau :</strong>
+              <%= stockDetail['CompanyProfile.securitiesBureau'] %>
+            </p>
+          </div>
+          <div style="width: 100%; height: auto; justify-content: right; display: flex; padding-top: 10px;">
+            <button class="addButton" onclick="openBuy()">BUY ORDER</button>
+            <button class="cancelButton" onclick="openSell()">SELL ORDER</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 p-10 mt-5 lg:grid-cols-2 xl:grid-cols-4">
+        <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
+          <div>
+            <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+              IPO Fund Raised
+            </h6>
+            <span class="text-xl font-semibold" style="color: #F6F7FB;">
+              <%= currencyFormatter(stockDetail['CompanyProfile.ipoFundRaised']) %>
+            </span>
+          </div>
+          <div>
+            <span>
+              <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
+          <div>
+            <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+              IPO Percentage
+            </h6>
+            <span class="text-xl font-semibold" style="color: #F6F7FB;">
+              <%= stockDetail['CompanyProfile.ipoPercentage'] %> %
+            </span>
+          </div>
+          <div>
+            <span>
+              <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                </path>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
+          <div>
+            <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+              Annual Dividend Yield
+            </h6>
+            <span class="text-xl font-semibold" style="color: #F6F7FB;">
+              <%= stockEntity.dividendPercentage %>
+            </span>
+          </div>
+          <div>
+            <span>
+              <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center shadow justify-between p-4 bg-[#2C354C] rounded-md">
+          <div>
+            <h6 class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase" style="color: #F6F7FB;">
+              IPO Offering Shares
+            </h6>
+            <span class="text-xl font-semibold" style="color: #F6F7FB;">
+              <%= amountFormatter(stockDetail['CompanyProfile.ipoOfferingShares']) %>
+            </span>
+          </div>
+          <div>
+            <span>
+              <svg class="w-12 h-12 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z">
+                </path>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="historicalContent">
+        <div class="chartTitle">
+          MARKET TRADE DATA
+        </div>
+        <div id="candleChart" class="chartContainer"></div>
+        <div class="chartTitle" style="padding-top: 10px;">
+          TRADE VOLUME
+        </div>
+        <div id="barChart" class="chartContainer"></div>
+      </div>
+    </div>
+
+
+    <div id="overlayTypeContainer" data-overlay-type="<%= overlayType %>"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const overlayTypeContainer = document.getElementById('overlayTypeContainer');
+        const overlayType = overlayTypeContainer.dataset.overlayType;
+
+        switch (overlayType) {
+          case 'buy': {
+            document.getElementById("overlayBuy").style.display = "block";
+            break;
+          }
+
+          case 'sell': {
+            document.getElementById("overlaySell").style.display = "block";
+            break;
+          }
+        }
+      });
+    </script>
+
+    <div id="dataContainer" data-chartData="<%= historicalDatas %>"></div>
+    <script>
+      function openBuy() {
+        document.getElementById("overlayBuy").style.display = "block";
+      }
+
+      function openSell() {
+        document.getElementById("overlaySell").style.display = "block";
+      }
+
+      function closeForm() {
+        document.getElementById("overlayBuy").style.display = "none";
+        document.getElementById("overlaySell").style.display = "none";
+      }
+    </script>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", function () {
+        const historicalDatasElement = document.getElementById('dataContainer');
+        if (historicalDatasElement) {
+          const historicalDatas = JSON.parse(historicalDatasElement.getAttribute('data-chartData'));
+          const dates = historicalDatas.map(el => el.date);
+          const close = historicalDatas.map(el => el.close);
+          const open = historicalDatas.map(el => el.open);
+          const high = historicalDatas.map(el => el.high);
+          const low = historicalDatas.map(el => el.low);
+          const volume = historicalDatas.map(el => el.volume);
+
+          const spreadMin = low.map((el) => {
+            if (el !== 0) {
+              return el
+            }
+          })
+          const spreadMax = high.map((el) => {
+            if (el !== 0) {
+              return el
+            }
+          })
+
+          const candleData = {
+            x: dates,
+            close: close,
+            decreasing: {
+              line: { color: '#FF0606' },
+              width: 0.2
+            },
+            high: high,
+            increasing: {
+              line: { color: '#1AFF06' },
+              width: 0.2
+            },
+            line: { color: 'rgba(31,119,180,1)', width: 1 },
+            low: low,
+            open: open,
+            type: 'candlestick',
+            xaxis: 'x',
+            yaxis: 'y'
+          };
+
+          const barData = [
+            {
+              x: dates,
+              y: volume,
+              type: 'bar',
+              marker: {
+                color: 'cyan'
+              },
+            }
+          ];
+
+          const layout1 = {
+            dragmode: 'zoom',
+            plot_bgcolor: "#202D4C",
+            paper_bgcolor: "#121A2C",
+            margin: {
+              r: 10,
+              t: 25,
+              b: 40,
+              l: 60
+            },
+            showlegend: false,
+            xaxis: {
+              autorange: true,
+              domain: [0, 1],
+              rangeselector: {
+                x: 0,
+                y: 1.2,
+                xanchor: 'left',
+                font: { size: 8 },
+                buttons: [{
+                  step: 'month',
+                  stepmode: 'backward',
+                  count: 6,
+                  label: '1 Month'
+                }, {
+                  step: 'month',
+                  stepmode: 'backward',
+                  count: 12,
+                  label: '1 Year'
+                }, {
+                  step: 'all',
+                  label: 'All dates'
+                }]
+              },
+              range: [dates[0], dates[dates.length - 1]],
+              rangeslider: { range: [dates[0], dates[dates.length - 1]] },
+              gridcolor: 'rgb(44, 57, 86)'
+            },
+            yaxis: {
+              autorange: true,
+              domain: [0, 1],
+              range: [Math.min(...spreadMin), Math.max(...spreadMax)],
+              type: 'linear',
+              gridcolor: 'rgb(44, 57, 86)'
+            }
+          };
+
+          const layout2 = {
+            plot_bgcolor: "#202D4C",
+            paper_bgcolor: "#121A2C",
+            dragmode: 'zoom',
+            margin: {
+              r: 10,
+              t: 25,
+              b: 40,
+              l: 60
+            },
+            showlegend: false,
+            xaxis: {
+              autorange: true,
+              domain: [0, 1],
+              rangeselector: {
+                x: 0,
+                y: 1.2,
+                xanchor: 'left',
+                font: { size: 8 },
+                buttons: [{
+                  step: 'month',
+                  stepmode: 'backward',
+                  count: 6,
+                  label: '1 Month'
+                }, {
+                  step: 'month',
+                  stepmode: 'backward',
+                  count: 12,
+                  label: '1 Year'
+                }, {
+                  step: 'all',
+                  label: 'All dates'
+                }]
+              },
+              range: [dates[0], dates[dates.length - 1]],
+              rangeslider: { range: [dates[0], dates[dates.length - 1]] },
+              gridcolor: 'rgb(44, 57, 86)'
+            },
+            yaxis: {
+              gridcolor: 'rgb(44, 57, 86)'
+            }
+          };
+
+          Plotly.newPlot('candleChart', [candleData], layout1), { displayModeBar: false };
+          Plotly.newPlot('barChart', barData, layout2)
+            .then(gd => {
+              gd.on('plotly_afterplot', () => {
+                console.log('BAR GRAPH RENDERED');
+              });
+            })
+            .catch(error => {
+              console.error('BAR GRAPH ERROR:', error);
+            })
+        }
+      });
+    </script>
+
+    <%- include('../partials/Footer.ejs') %>

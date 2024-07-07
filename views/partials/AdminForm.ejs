@@ -1,0 +1,61 @@
+<div id="overlayAdd" class="overlay">
+	<div class="overlay-content">
+		<h1 style="margin-top: 10px; font-size: 20px;">ADD NEW COMPANY</h1>
+		<form action="/admin/companyData/add" method="post">
+
+			<div class="errorAlignForm">
+				<label for="stockCode">Ticker:</label>
+				<p class="errorMessageForm"><%= errors.stockCode %></p>
+			</div>
+			<input type="text" id="stockCodeBuy" name="stockCode" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
+			
+			<div class="errorAlignForm">
+				<label for="dividend">Dividend Yield:</label>
+				<p class="errorMessageForm"><%= errors.dividend %></p>
+			</div>
+			<input type="number" step="0.01" id="dividendBuy" name="dividend" style="padding-left: 20px; margin-top: 5px; border-radius:7px;">
+
+			<div
+				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px;">
+				<button type="submit" class="addButton" style="font-size: 14px; width: 180px">ADD COMPANY</button>
+				<button type="button" class="cancelButton" style="font-size: 14px; width: 180px;"
+					onclick="closeForm()">CANCEL</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div id="overlayUpdate" class="overlay">
+	<div class="overlay-content">
+		<h1 style="margin-top: 10px; font-size: 20px;">UPDATE DIVIDEND</h1>
+		<form action="/admin/companyData/update" method="post">
+			
+			<div class="errorAlignForm">
+				<label for="stockIdUpdate">Ticker:</label>
+				<p class="errorMessageForm"><%= errors.stockCode %></p>
+			</div>
+			<select name="StockId" id="stockIdUpdate" style=" border-radius:7px; height: auto; padding-top: 10px; padding-bottom: 10px; padding-left: 10px;">
+				<option value="">---SELECT---</option>
+				<% stocks.forEach(el => { %>
+					<option value="<%= el.id %>"><%= el.stockCode %></option>
+				<% }) %>
+			</select>
+			
+			<div class="errorAlignForm">
+				<label for="dividend">Dividend Yield:</label>
+				<p class="errorMessageForm"><%= errors.dividend %></p>
+			</div>
+
+			<input type="number" step="0.01" id="dividendUpdate" name="dividend" style="padding-left: 20px; margin-top: 5px;">
+			<div
+				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px; border-radius:7px;">
+				<button type="submit" class="addButton" style="font-size: 14px; width: 180px">CONFIRM</button>
+				<button type="button" class="cancelButton" style="font-size: 14px; width: 180px;"
+					onclick="closeForm()">CANCEL</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+

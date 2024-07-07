@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheet.css"/>
+    <link rel="icon" href="/icons/titleLogo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body class="standardBody">
+    <div class="standardHeader">
+        <div class="logoGroup">
+            <img style="height: 45px; padding-top: 5px;" src="/icons/logo.png" alt="">
+            <div>
+                IntelliTrade
+            </div>
+        </div>
+        <div class="standardButtonsGroup">
+            <a href="/home" class="standardButton">
+                HOME
+            </a>
+
+            <div class="dropdown">
+                <button class="standardButtonDD">ADMIN</button>
+                <div class="dropdown-content">
+                    <a href="/admin/companyData">Manage Companies</a>
+                    <a href="/admin/userManage">Manage User</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="standardButtonDD">TRADES</button>
+                <div class="dropdown-content">
+                    <a href="/market">Listed Companies</a>
+                    <a href="/dashboard">Market Orders</a>
+                    <a href="/portfolio">Portfolios</a>
+                </div>
+            </div>
+
+            <a href="/signout" class="standardButton">
+                SIGN OUT
+            </a>
+
+        </div>
+    </div>
+    <br>
+</body>
+
+</html>

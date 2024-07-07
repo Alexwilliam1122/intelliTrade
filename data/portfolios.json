@@ -1,0 +1,32 @@
+[
+    {
+        "quantity": 23000,
+        "UserId": 3,
+        "StockId": 2
+    },
+    {
+        "quantity": 33100,
+        "UserId": 3,
+        "StockId": 3
+    },
+    {
+        "quantity": 72000,
+        "UserId": 3,
+        "StockId": 4
+    },
+    {
+        "quantity": 20100,
+        "UserId": 3,
+        "StockId": 5
+    },
+    {
+        "quantity": 39000,
+        "UserId": 3,
+        "StockId": 8
+    },
+    {
+        "quantity": 92500,
+        "UserId": 3,
+        "StockId": 11
+    }
+]

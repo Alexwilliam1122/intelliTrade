@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="icon" href="/icons/titleLogo.png" type="image/png">
+    <link rel="stylesheet" href="stylesheet.css" />
+</head>
+
+<body class="standardBody" style="background-color: black;">
+
+    <div class="pageAlignCenter">
+        <div class="signUpCard">
+            SIGN UP <br>
+            <form action="/signup" class="formGroup" method="post">
+                <div class="formCard">
+
+                    <div class="errorAlign">
+                        <label for="username">Username</label>
+                        <p class="errorMessage"><%= errors.username %></p>
+                    </div>
+                    <input type="text" id="username" name="username" class="inputField">
+
+                    <div class="errorAlign">
+                        <label for="password">Create Password</label>
+                        <p class="errorMessage"><%= errors.password %></p>
+                    </div>
+                    <input type="password" id="password" name="password" class="inputField">
+
+                    <div class="errorAlign">
+                        <label for="rePassword">Confirm password</label>
+                        <p class="errorMessage"><%= errors.password %></p>
+                    </div>
+                    <input type="password" id="rePassword" name="rePassword" class="inputField">
+
+                    <div class="errorAlign">
+                        <label for="email">Email Address</label>
+                        <p class="errorMessage"><%= errors.email %></p>
+                    </div>
+                    <input type="email" id="email" name="email" class="inputField">
+                </div>
+                <button type="submit" class="landingButton">CREATE ACCOUNT</button>
+                <a href="/" class="landingButton">
+                    CANCEL
+                </a>
+            </form>
+        </div>
+        <video class="landingVideo" autoplay loop>
+            <source src="/assets/landingPage.MP4" type="video/mp4">
+        </video>
+    </div>
+</body>
+</html>

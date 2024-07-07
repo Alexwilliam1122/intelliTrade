@@ -1,0 +1,166 @@
+<%- include('../partials/Header.ejs', {title: 'Listed Companies' }) %>
+
+    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+    <link rel="stylesheet"
+        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+    <%- include ('../partials/AdminForm.ejs', { stocks, errors }) %>
+    <%- include ('../partials/AdminDelete.ejs', { deleteConfig, errors }) %>
+    <%- include ('../partials/alerts.ejs', { notifMsg }) %>
+
+        <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24" style="padding-top: 30px;">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                <div class="rounded-t mb-0 px-4 py-5 border-0" style="margin-right: 40px;">
+                    <div class="flex flex-wrap items-center" style="margin-right: 0px ;padding-right: 0px;">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 class="font-semibold text-base text-blueGray-700" style="font-size: 25px;">Listed
+                                Companies</h3>
+                        </div>
+                        <div style="margin-right: 0px ;padding-right: 0px;" class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                            <form action="/admin/companyData"
+                                style="margin-right: 0px ;padding-right: 0px; display: flex; justify-content: right; vertical-align: middle; gap: 5px;">
+                                <input type="search" placeholder="Search by Company Name or Code" style="width: 300px;"
+                                    class="bg-white border border-gray-300 rounded-md py-2 px-4 text-sm focus:outline-none focus:border-indigo-500"
+                                    style="height: 37.5px;"
+                                    name="search"/>
+                                <input type="submit" value="Search"
+                                    class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-2.5 rounded outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+                                    style="width: auto;" />
+                            </form>
+                        </div>
+                    </div>
+                    <div
+                        style="width: auto; height: auto; justify-content: right; display: flex; padding-top: 10px;">
+                        <button class="addButton" onclick="openAdd()">ADD NEW</button>
+                        <button style="margin-right: 0px;" class="cancelButton" onclick="openUpdate()">UPDATE</button>
+                        <a href="/admin/companyData/renew" style="margin-left: 8px;"><button style="margin-right: 0px;" class="cancelButton">GET LATEST</button></a>
+                    </div>
+                </div>
+
+                <div class="block w-full overflow-x-auto">
+                    <table class="items-center bg-transparent w-full border-collapse">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Company Name
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Ticker
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Dividend Yield
+                                </th>
+                                <th
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% stocks.forEach(el=> { %>
+                                <tr style="border-bottom: 0.5px solid rgb(207, 207, 207); border-top: 0.5px solid rgb(207, 207, 207);">
+                                    <th
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
+                                        <%- el.stockName %>
+                                    </th>
+                                    <td
+                                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
+                                        <%- el.stockCode %>
+                                    </td>
+                                    <td
+                                        class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <%- el.dividend %>
+                                    </td>
+                                    <td
+                                        class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+                                        >
+                                        <a href="/admin/companyData/?deleteId=<%= el.id %>&deleteName=<%= el.stockName %>"><button class="deleteButton" style="margin-bottom: 0px;">Delete</button></a>
+                                    </td> 
+                                </tr>
+                                <% }) %>
+                                    <tr style="height: 20px;">
+                                    </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlayTypeContainer" data-overlay-type="<%= overlayType %>"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const overlayTypeContainer = document.getElementById('overlayTypeContainer');
+                const overlayType = overlayTypeContainer.dataset.overlayType;
+                
+                switch (overlayType) {
+                    case 'update': {
+                        document.getElementById("overlayUpdate").style.display = "block";
+                        break;
+                    }
+
+                    case 'delete': {
+                        document.getElementById("overlayDelete").style.display = "block";
+                        break;
+                    }
+
+                    case 'create': {
+                        document.getElementById("overlayAdd").style.display = "block";
+                        break;
+                    }
+
+                    case 'alert': {
+                        document.getElementById("alert").style.display = "block";
+                        break;
+                    }
+                }
+            });
+        </script>
+
+        <div id="dataContainer" data-stocks="<%= stockDatas %>"></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const stocksElement = document.getElementById('dataContainer');
+                const stocks = JSON.parse(stocksElement.getAttribute('data-stocks'));
+                const stockIdSelect = document.getElementById('stockIdUpdate');
+                const dividendInput = document.getElementById('dividendUpdate');
+
+                stockIdSelect.addEventListener('change', function () {
+                    const selectedStockId = this.value;
+                    const selectedStock = stocks.find(el => el.id === parseInt(selectedStockId));
+
+                    if (selectedStock && selectedStock.dividend !== undefined) {
+                        dividendInput.value = selectedStock.dividend;
+                    } else {
+                        dividendInput.value = '';
+                    }
+                });
+            });
+        </script>
+
+        <script>
+            function openAdd() {
+                document.getElementById("overlayAdd").style.display = "block";
+            }
+
+            function openDelete() {
+                document.getElementById("overlayDelete").style.display = "block";
+            }
+
+            function openUpdate() {
+                document.getElementById("overlayUpdate").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("overlayAdd").style.display = "none";
+                document.getElementById("overlayUpdate").style.display = "none";
+                document.getElementById("overlayDelete").style.display = "none";
+                document.getElementById("alert").style.display = "none";
+            }
+        </script>
+
+
+        <%- include('../partials/Footer.ejs') %>

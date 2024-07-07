@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres.jahwrdtfiksijpyxtcty",
+    "password": "*Deathstroke001!",
+    "database": "postgres",
+    "port": 5432,
+    "host": "aws-0-ap-southeast-1.pooler.supabase.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "IntelliTrade_2",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production": {
+    "username": "postgres.jahwrdtfiksijpyxtcty",
+    "password": "*Deathstroke001!",
+    "database": "postgres",
+    "port": 5432,
+    "host": "aws-0-ap-southeast-1.pooler.supabase.com",
+    "dialect": "postgres"
+  }
+}

@@ -1,0 +1,56 @@
+<%- include('../partials/Header.ejs', {title: 'Homepage' }) %>
+
+    <div class="newsCards">
+
+        <% newsData.forEach(news=> { %>
+
+            <div class="pt-16">
+                <div
+                class="relative flex flex-col mt-6 text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 shadow-lg"
+                    style="height: 100%;">
+                    <!-- news image -->
+                    <div
+                        class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40"
+                        style="height: 100%;">
+                        <img style="height: 100%;" src= <%= news.imageUrl %> alt= "/assets/newsAlt.png"/>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-6" style="height: 100%;">
+                        <!-- publish date -->
+                        <p class="text-xs text-gray-500 mb-2">Published on <%= news.date %></p>
+
+                        <!-- news title -->
+                        <h5
+                            class="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+                            <%= news.title %>
+                        </h5>
+
+                        <!-- description -->
+                        <p class="block font-sans text-base antialiased font-light leading-relaxed text-inherit">
+                            <%= news.description %>
+                        </p>
+                    </div>
+
+                    <!-- Publisher Logo and Name -->
+                    <div class="p-6 pt-0 flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src=<%= news.publisherLogo %> class="h-6 w-6 mr-2">
+                            <span class="text-xs text-gray-600"><%= news.publisherName %></span>
+                        </div>
+
+                        <!-- Read More Button -->
+                        <a href=<%= news.newsUrl %> target="_blank" class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <% }) %>
+
+    </div>
+
+    
+
+    <%- include('../partials/Footer.ejs') %>

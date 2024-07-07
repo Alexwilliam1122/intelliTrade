@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "stockName": "Bank Central Asia Tbk.",
+        "stockCode": "BBCA",
+        "dividend": "2.88"
+    },
+    {
+        "id": 2,
+        "stockName": "PT Bukit Asam (Persero) Tbk",
+        "stockCode": "PTBA",
+        "dividend": "19.29"
+    },
+    {
+        "id": 3,
+        "stockName": "PT Indo Tambangraya Megah Tbk",
+        "stockCode": "ITMG",
+        "dividend": "17.38"
+    },
+    {
+        "id": 4,
+        "stockName": "PT Adaro Energy Indonesia Tbk",
+        "stockCode": "ADRO",
+        "dividend": "15.36"
+    },
+    {
+        "id": 5,
+        "stockName": "PT Perusahaan Gas Negara (Persero) Tbk",
+        "stockCode": "PGAS",
+        "dividend": "9.28"
+    },
+    {
+        "id": 6,
+        "stockName": "PT Hanjaya Mandala Sampoerna Tbk",
+        "stockCode": "HMSP",
+        "dividend": "9.18"
+    },
+    {
+        "id": 7,
+        "stockName": "PT Bank Rakyat Indonesia Tbk.",
+        "stockCode": "BBRI",
+        "dividend": "7.82"
+    },
+    {
+        "id": 8,
+        "stockName": "PT Bayan Resources Tbk.",
+        "stockCode": "BYAN",
+        "dividend": "7.32"
+    },
+    {
+        "id": 9,
+        "stockName": "PT Bank Mandiri (Persero) Tbk.",
+        "stockCode": "BMRI",
+        "dividend": "4.88"
+    },
+    {
+        "id": 10,
+        "stockName": "PT Telkom Indonesia (Persero) Tbk.",
+        "stockCode": "TLKM",
+        "dividend": "4.30"
+    },
+    {
+        "id": 11,
+        "stockName": "PT Astra International Tbk.",
+        "stockCode": "ASII",
+        "dividend": "2.79"
+    }
+]

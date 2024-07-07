@@ -1,0 +1,22 @@
+<div id="overlayDelete" class="overlay">
+	<div class="overlay-content">
+		<h1 style="margin-top: 10px; font-size: 20px;">DELETE AUTHORIZATION</h1>
+		<form action="/admin/userManage/delete/<%= deleteConfig.deleteId %>" method="post">
+			<label class="errorAlignForm" for="viewDelete" style=" margin-top: 15px;">Delete Target:</label>
+			<input value="<%= deleteConfig.deleteName %>" readonly autocomplete="off" type="text" id="viewDelete" name="viewDelete" style="padding-left: 20px; margin-top: 15px; border-radius:7px;">
+
+			<div class="errorAlignForm" style="margin-top: 30px;">
+				<label for="password">Password</label>
+				<p class="errorMessageForm"><%= errors.password %></p>
+			</div>
+			<input autocomplete="off" type="password" id="password" name="password" style="padding-left: 20px; margin-top: 5px;">
+
+			<div
+				style="width: 100%; height: auto; justify-content: center; display: flex; padding-top: 10px; margin-top: 40px; gap: 10px; border-radius:7px;">
+				<button type="submit" class="deleteButton" style="font-size: 14px; width: 180px">CONFIRM</button>
+				<button type="button" class="cancelButton" style="font-size: 14px; width: 180px;"
+					onclick="closeForm()">CANCEL</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="icon" href="/icons/titleLogo.png" type="image/png">
+    <link rel="stylesheet" href="stylesheet.css" />
+</head>
+
+<body class="standardBody" style="background-color: black;">
+
+    <div class="pageAlignCenter">
+        <div class="loginCard">
+            LOG IN <br>
+            <form action="/login" class="formGroup" method="post">
+                <div class="formCard">
+                    <div class="errorAlign">
+                        <label for="username">Username</label>
+                        <p class="errorMessage"><%= errors.username %></p>
+                    </div>
+                    <input type="text" id="username" name="username" class="inputField">
+                    <div class="errorAlign">
+                        <label for="password">Password</label>
+                        <p class="errorMessage"><%= errors.password %></p>
+                    </div>
+                    <input type="password" id="password" name="password" class="inputField">
+                </div>
+                <button type="submit" class="landingButton">LOGIN</button>
+                <a href="/" class="landingButton">
+                    CANCEL
+                </a>
+            </form>
+        </div>
+        <video class="landingVideo" autoplay loop>
+            <source src="/assets/landingPage.MP4" type="video/mp4">
+        </video>
+    </div>
+</body>
+</html>
